@@ -10,7 +10,7 @@ No build step, no dependencies: open `index.html` and play.
 ## Play it
 
 - **Locally**: open `index.html` in any modern browser (or serve the folder with `python3 -m http.server`).
-- **Online**: enable GitHub Pages for this repository (Settings → Pages → deploy from branch, root folder) and the game is live at the Pages URL.
+- **Online**: https://razinaleksandr.github.io/video-game/ — deployed automatically from `main` by the GitHub Pages workflow in `.github/workflows/pages.yml`.
 
 Progress autosaves to the browser; the title screen offers **Continue Case** when a save exists.
 
