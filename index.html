@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Marshlight Murder</title>
+  <meta name="description" content="A hand-drawn point-and-click detective mystery. Explore a haunted fairground, interrogate suspects, combine clues into deductions and name the killer.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- One shared set of SVG defs (gradients, patterns, filters) for every SVG on the page -->
+  <svg id="global-defs" width="0" height="0" style="position:absolute;left:0;top:0" aria-hidden="true" focusable="false"></svg>
+  <div id="game">
+    <!-- Title screen -->
+    <div id="title-screen" class="screen">
+      <div id="title-art"></div>
+      <div class="title-card">
+        <div class="title-kicker">A Detective Ashcombe Mystery</div>
+        <h1>The Marshlight Murder</h1>
+        <p class="title-blurb">A fairground. A ghost train. A body. And a legend that everyone would rather blame than a person.</p>
+        <div class="title-buttons">
+          <button id="btn-new" class="big-btn">New Case</button>
+          <button id="btn-continue" class="big-btn secondary" hidden>Continue Case</button>
+        </div>
+        <div class="title-help">Click things to investigate. Talk to people. Combine clues in your notebook to deduce the truth.</div>
+      </div>
+    </div>
+
+    <!-- Main play screen -->
+    <div id="play-screen" class="screen" hidden>
+      <div id="scene"></div>
+      <div id="hotspot-label"></div>
+
+      <div id="hud">
+        <div id="location-name"></div>
+        <div class="hud-buttons">
+          <button id="btn-map" class="hud-btn" title="Map (M)"><span class="ico">🗺</span> Map</button>
+          <button id="btn-notebook" class="hud-btn" title="Notebook (N)"><span class="ico">📓</span> Notebook <span id="notebook-badge" class="badge" hidden></span></button>
+          <button id="btn-accuse" class="hud-btn accuse" hidden title="Make an accusation">⚖ Accuse</button>
+          <button id="btn-sound" class="hud-btn icon-only" title="Toggle sound">🔊</button>
+        </div>
+      </div>
+
+      <div id="toast-area"></div>
+
+      <!-- Dialogue -->
+      <div id="dialogue" hidden>
+        <div id="dlg-portrait"></div>
+        <div id="dlg-body">
+          <div id="dlg-name"></div>
+          <div id="dlg-text"></div>
+          <div id="dlg-continue">▼</div>
+          <div id="dlg-choices" hidden></div>
+        </div>
+      </div>
+
+      <!-- Map overlay -->
+      <div id="map-overlay" class="overlay" hidden>
+        <div class="panel map-panel">
+          <button class="close-btn" data-close="map-overlay">✕</button>
+          <h2>Pellow Marsh &amp; Marshlight Fair</h2>
+          <div id="map-art"></div>
+        </div>
+      </div>
+
+      <!-- Notebook overlay -->
+      <div id="notebook-overlay" class="overlay" hidden>
+        <div class="panel notebook-panel">
+          <button class="close-btn" data-close="notebook-overlay">✕</button>
+          <div class="nb-tabs">
+            <button class="nb-tab active" data-tab="clues">Clues</button>
+            <button class="nb-tab" data-tab="suspects">Suspects</button>
+            <button class="nb-tab" data-tab="deductions">Deductions <span id="deduction-badge" class="badge" hidden></span></button>
+            <button class="nb-tab" data-tab="notes">Case Notes</button>
+          </div>
+          <div id="nb-content"></div>
+        </div>
+      </div>
+
+      <!-- Deduction puzzle overlay -->
+      <div id="deduction-overlay" class="overlay" hidden>
+        <div class="panel deduction-panel">
+          <button class="close-btn" data-close="deduction-overlay">✕</button>
+          <div id="deduction-content"></div>
+        </div>
+      </div>
+
+      <!-- Clue picker overlay (shared by dialogue / deductions / accusation) -->
+      <div id="picker-overlay" class="overlay" hidden>
+        <div class="panel picker-panel">
+          <button class="close-btn" data-close="picker-overlay">✕</button>
+          <h2 id="picker-title">Choose a clue</h2>
+          <div id="picker-grid"></div>
+        </div>
+      </div>
+
+      <!-- Accusation overlay -->
+      <div id="accuse-overlay" class="overlay" hidden>
+        <div class="panel accuse-panel">
+          <div id="accuse-content"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ending -->
+    <div id="end-screen" class="screen" hidden>
+      <div id="end-art"></div>
+      <div class="title-card">
+        <div class="title-kicker">Case Closed</div>
+        <h1>The Marshlight Murder</h1>
+        <div id="end-stats"></div>
+        <div class="title-buttons">
+          <button id="btn-again" class="big-btn">Play Again</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/art.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/engine.js"></script>
+</body>
+</html>
